@@ -12,7 +12,7 @@ jobs:
     steps:
       - id: changes
         run: |
-          URL="https://api.github.com/repos/sherlock-project/sherlock/pulls/${{ github.event.pull_request.number }}/files"
+          URL="https://api.github.com/repos/shadow-sherlock-project/shadow-sherlock/pulls/${{ github.event.pull_request.number }}/files"
           FILES=$(curl -s -X GET -G $URL | jq -r '.[] | .filename')
           if echo $FILES | grep -q ".json"; then
             echo "::set-output name=matrix::{\"include\":[{\"python\":\"3.8\"}]}"
